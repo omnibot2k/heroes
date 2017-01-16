@@ -13,6 +13,9 @@ public class Story implements Serializable {
     @GeneratedValue
     private Long id;
 
+    @Column
+    private String title;
+
     @Lob
     @Column(length = 100000)
     private String content;
@@ -22,14 +25,25 @@ public class Story implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //TODO: does updatable make sense here.. think so you can still delete
-    @JoinTable(name = "story_hero", joinColumns = {
+    @JoinTable(name = "hero_story", joinColumns = {
             @JoinColumn(name = "story_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "hero_id",
                     nullable = false, updatable = false)})
-
     private Set<Hero> heroes = new HashSet<>();
 
     public Story() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {

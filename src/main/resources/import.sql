@@ -211,13 +211,13 @@ insert into hero(name) values ('Blackwidow');
 insert into profile(hero_id, bio, gender, picture) values (5, 'Black Widow is also known as Nikita Romanov', 1, '123456.png');
 
 -- Stories
-insert into story(content, author) values ('iron man is iron.', 'joker')
+insert into story(title, content, author) values ('iron rulez', 'iron man is iron.', 'joker')
 insert into hero_story(hero_id, story_id) values (1, 1)
 
-insert into story(content, author) values ('the hulk is green.', 'jokerrules')
+insert into story(title, content, author) values ('mean green', 'the hulk is green.', 'jokerrules')
 insert into hero_story(hero_id, story_id) values (3, 2)
 
-insert into story(content, author) values ('the hulk likes blackwidoow.', 'jokerrules')
+insert into story(title, content, author) values ('hulk''s girl', 'the hulk likes blackwidoow.', 'jokerrules')
 insert into hero_story(hero_id, story_id) values (3, 3)
 insert into hero_story(hero_id, story_id) values (5, 3)
 

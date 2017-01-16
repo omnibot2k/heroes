@@ -22,7 +22,7 @@ public class Hero implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "hero")
     private Profile heroProfile;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "hero")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "heroes")
     private Set<Story> stories = new HashSet<>();
 
     public Hero() {
