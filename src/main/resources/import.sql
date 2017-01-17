@@ -184,3 +184,40 @@ insert into city(country, name, state, map) values ('USA', 'Washington', 'DC', '
 insert into hotel(city_id, name, address, zip) values (21, 'Hotel Rouge', '1315 16th Street NW', '20036')
 insert into review(hotel_id, idx, check_in_date, rating, trip_type, title, details) values (27, 0, '2000-01-29', 0, 2, 'Never again', 'I will never ever stay here again!!  They wanted extra cash to get fresh batteries for the TV remote')
 insert into review(hotel_id, idx, check_in_date, rating, trip_type, title, details) values (27, 1, '2006-02-20', 0, 0, 'Avoid', 'This place is the pits, they charged us twice for a single night stay.  I only got refunded after contacting my credit card company.')
+
+--
+-- Sample dataset containing a number of Heroes.  The profiles are entirely fictional :)
+--
+
+-- =================================================================================================
+-- Ironman
+insert into hero(name) values ('Ironman');
+insert into profile(hero_id, bio, gender, picture) values (1, 'Ironman''s secret identity is Tony Stark', 0, '123456.png');
+
+-- Spiderman
+insert into hero(name) values ('Spiderman');
+insert into profile(hero_id, bio, gender, picture) values (2, 'Spiderman''s secret identity is Peter Parker', 0, '123456.png');
+
+-- Hulk
+insert into hero(name) values ('Hulk');
+insert into profile(hero_id, bio, gender, picture) values (3, 'The Hulk''s secret identity is Bruce Banner', 0, '123456.png');
+
+-- Thor
+insert into hero(name) values ('Thor');
+insert into profile(hero_id, bio, gender, picture) values (4, 'Thor''s father is Odin', 0, '123456.png');
+
+-- Blackwidow
+insert into hero(name) values ('Blackwidow');
+insert into profile(hero_id, bio, gender, picture) values (5, 'Black Widow is also known as Nikita Romanov', 1, '123456.png');
+
+-- Stories
+insert into story(title, content, author) values ('iron rulez', 'iron man is iron.', 'joker')
+insert into hero_story(hero_id, story_id) values (1, 1)
+
+insert into story(title, content, author) values ('mean green', 'the hulk is green.', 'jokerrules')
+insert into hero_story(hero_id, story_id) values (3, 2)
+
+insert into story(title, content, author) values ('hulk''s girl', 'the hulk falls in love with blackwidoow.', 'jokerrules')
+insert into hero_story(hero_id, story_id) values (3, 3)
+insert into hero_story(hero_id, story_id) values (5, 3)
+

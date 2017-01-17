@@ -5,8 +5,16 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
+//TODO: constraint on gender
+//prevents multiple values hero_profiles using the same hero_id
+
+//added unique to joinColumn
+/*@Table(uniqueConstraints = {
+        @UniqueConstraint(name = "hero_profile_constraints", columnNames = {"hero_id"})
+})*/
 @Entity
-public class HeroProfile implements Serializable {
+public class Profile implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,18 +32,20 @@ public class HeroProfile implements Serializable {
     @Column(nullable = true)
     private String picture;
 
-    @OneToOne(mappedBy = "heroProfile")
+    //TODO: allows multiple values
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hero_id", unique = true)
     private Hero hero;
 
-    public HeroProfile() {
+    public Profile() {
     }
 
-    public HeroProfile(String bio, Gender gender) {
+    public Profile(String bio, Gender gender) {
         this.bio = bio;
         this.gender = gender;
     }
 
-    public HeroProfile(String bio, Gender gender, String picture) {
+    public Profile(String bio, Gender gender, String picture) {
         this.bio = bio;
         this.gender = gender;
         this.picture = picture;
