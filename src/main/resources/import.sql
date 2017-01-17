@@ -217,7 +217,7 @@ insert into hero_story(hero_id, story_id) values (1, 1)
 insert into story(title, content, author) values ('mean green', 'the hulk is green.', 'jokerrules')
 insert into hero_story(hero_id, story_id) values (3, 2)
 
-insert into story(title, content, author) values ('hulk''s girl', 'the hulk likes blackwidoow.', 'jokerrules')
+insert into story(title, content, author) values ('hulk''s girl', 'the hulk falls in love with blackwidoow.', 'jokerrules')
 insert into hero_story(hero_id, story_id) values (3, 3)
 insert into hero_story(hero_id, story_id) values (5, 3)
 
