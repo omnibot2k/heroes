@@ -19,10 +19,10 @@ public class Hero implements Serializable {
     @NaturalId
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "hero")
-    private Profile heroProfile;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "hero", cascade = CascadeType.REMOVE)
+    private Profile profile;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "heroes")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "heroes", cascade = CascadeType.REMOVE)
     private Set<Story> stories = new HashSet<>();
 
     public Hero() {
@@ -44,12 +44,12 @@ public class Hero implements Serializable {
         this.name = name;
     }
 
-    public Profile getHeroProfile() {
-        return heroProfile;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setHeroProfile(Profile heroProfile) {
-        this.heroProfile = heroProfile;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public Set<Story> getStories() {

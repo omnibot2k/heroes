@@ -192,23 +192,23 @@ insert into review(hotel_id, idx, check_in_date, rating, trip_type, title, detai
 -- =================================================================================================
 -- Ironman
 insert into hero(name) values ('Ironman');
-insert into profile(hero_id, bio, gender, picture) values (1, 'Ironman''s secret identity is Tony Stark', 0, '123456.png');
+insert into profile(hero_id, bio, gender, picture) values (1, 'Ironman''s secret identity is Tony Stark', 'MALE', '123456.png');
 
 -- Spiderman
 insert into hero(name) values ('Spiderman');
-insert into profile(hero_id, bio, gender, picture) values (2, 'Spiderman''s secret identity is Peter Parker', 0, '123456.png');
+insert into profile(hero_id, bio, gender, picture) values (2, 'Spiderman''s secret identity is Peter Parker', 'MALE', '123456.png');
 
 -- Hulk
 insert into hero(name) values ('Hulk');
-insert into profile(hero_id, bio, gender, picture) values (3, 'The Hulk''s secret identity is Bruce Banner', 0, '123456.png');
+insert into profile(hero_id, bio, gender, picture) values (3, 'The Hulk''s secret identity is Bruce Banner', 'MALE', '123456.png');
 
 -- Thor
 insert into hero(name) values ('Thor');
-insert into profile(hero_id, bio, gender, picture) values (4, 'Thor''s father is Odin', 0, '123456.png');
+insert into profile(hero_id, bio, gender, picture) values (4, 'Thor''s father is Odin', 'MALE', '123456.png');
 
 -- Blackwidow
 insert into hero(name) values ('Blackwidow');
-insert into profile(hero_id, bio, gender, picture) values (5, 'Black Widow is also known as Nikita Romanov', 1, '123456.png');
+insert into profile(hero_id, bio, gender, picture) values (5, 'Black Widow is also known as Nikita Romanov', 'FEMALE', '123456.png');
 
 -- Stories
 insert into story(title, content, author) values ('iron rulez', 'iron man is iron.', 'joker')

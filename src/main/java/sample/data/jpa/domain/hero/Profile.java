@@ -1,7 +1,5 @@
 package sample.data.jpa.domain.hero;
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -26,7 +24,7 @@ public class Profile implements Serializable {
     private String bio;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Column(nullable = true)

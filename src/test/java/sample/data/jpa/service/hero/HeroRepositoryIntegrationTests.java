@@ -74,7 +74,7 @@ public class HeroRepositoryIntegrationTests {
     public void findByNameIgnoringCase() {
         String name = "Blackwidow";
         Hero hero = this.repository.findByNameIgnoringCase(name);
-        Profile heroProfile = hero.getHeroProfile();
+        Profile heroProfile = hero.getProfile();
         assertThat(heroProfile.getGender() == Gender.FEMALE);
         assertThat(heroProfile.getHero().getName() == "Blackwidow");
     }
