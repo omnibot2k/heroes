@@ -23,7 +23,7 @@ public class Story implements Serializable {
     @Column(nullable = false)
     private String author; //TODO: user...
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     //@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     //TODO: does updatable make sense here.. think so you can still delete
     @JoinTable(name = "hero_story", joinColumns = {
