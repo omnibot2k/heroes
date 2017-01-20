@@ -11,7 +11,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations under the License.,
  */
 
 package sample.data.jpa.service.hero;
@@ -19,14 +19,13 @@ package sample.data.jpa.service.hero;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import sample.data.jpa.domain.hero.Hero;
-import sample.data.jpa.domain.hero.Profile;
 
 public interface HeroService {
 
     Page<Hero> findHeroes(HeroSearchCriteria criteria, Pageable pageable);
 
-    Hero getHero(String name);
+    Hero getHero(String name, Pageable pageable);
 
-    Page<Profile> getHeroProfiles(Hero hero, Pageable pageable);
+    //Page<Profile> getHeroProfiles(Hero hero, Pageable pageable);
 
 }
