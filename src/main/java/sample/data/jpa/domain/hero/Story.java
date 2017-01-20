@@ -1,5 +1,7 @@
 package sample.data.jpa.domain.hero;
 
+import org.hibernate.annotations.LazyToOne;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;

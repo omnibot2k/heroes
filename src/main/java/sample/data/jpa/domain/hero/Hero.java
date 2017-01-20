@@ -19,12 +19,15 @@ public class Hero implements Serializable {
     @NaturalId
     private String name;
 
+    //http://stackoverflow.com/questions/30464782/how-to-maintain-bi-directional-relationships-with-spring-data-rest-and-jpa
+    //read response .. i probably don't want bi-directional here...
+    /*
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "hero", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "heroes", cascade = CascadeType.REMOVE)
     private Set<Story> stories = new HashSet<>();
-
+*/
     public Hero() {
     }
 
@@ -44,6 +47,7 @@ public class Hero implements Serializable {
         this.name = name;
     }
 
+    /*
     public Profile getProfile() {
         return profile;
     }
@@ -58,6 +62,6 @@ public class Hero implements Serializable {
 
     public void setStories(Set<Story> stories) {
         this.stories = stories;
-    }
+    }*/
 }
 
