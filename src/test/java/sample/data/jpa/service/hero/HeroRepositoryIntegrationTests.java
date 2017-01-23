@@ -70,6 +70,7 @@ public class HeroRepositoryIntegrationTests {
         assertThat(allMatch);
     }
 
+    /*
     @Test
     public void findByNameIgnoringCase() {
         String name = "Blackwidow";
@@ -77,5 +78,5 @@ public class HeroRepositoryIntegrationTests {
         Profile heroProfile = hero.getProfile();
         assertThat(heroProfile.getGender() == Gender.FEMALE);
         assertThat(heroProfile.getHero().getName() == "Blackwidow");
-    }
+    }*/
 }

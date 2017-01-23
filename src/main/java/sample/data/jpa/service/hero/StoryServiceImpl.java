@@ -46,7 +46,9 @@ class StoryServiceImpl implements StoryService {
             pages = storyRepository.findAll(pageable);
 
             //fetch lazy heroes :)
-            pages.getContent().forEach(story -> story.getHeroes().size());
+            //actually don't fetch... this would be n+1 query...
+            //seems to work now anyways
+            //pages.getContent().forEach(story -> story.getHeroes().size());
         } else if (!StringUtils.isEmpty(content)) {
             pages = storyRepository.findByContentContainingAllIgnoringCase(content, pageable);
         } else {

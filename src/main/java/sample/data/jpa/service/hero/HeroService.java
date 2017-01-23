@@ -28,4 +28,8 @@ public interface HeroService {
 
     //Page<Profile> getHeroProfiles(Hero hero, Pageable pageable);
 
+    Hero getHero(Long id);
+
+    Hero findHeroAbilities(Long id);
+
 }

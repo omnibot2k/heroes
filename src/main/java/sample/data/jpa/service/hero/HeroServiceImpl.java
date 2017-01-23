@@ -39,4 +39,15 @@ public class HeroServiceImpl implements HeroService {
     public Hero getHero(String name, Pageable pageable) {
         return heroRepository.findByNameIgnoringCase(name);
     }
+
+    @Override
+    public Hero getHero(Long id) {
+        return heroRepository.findOne(id);
+    }
+
+
+    @Override
+    public Hero findHeroAbilities(Long id) {
+        return heroRepository.findHeroAbilities(id);
+    }
 }
