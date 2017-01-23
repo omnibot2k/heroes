@@ -221,3 +221,20 @@ insert into story(title, content, author) values ('hulk''s girl', 'the hulk fall
 insert into hero_story(hero_id, story_id) values (3, 3)
 insert into hero_story(hero_id, story_id) values (5, 3)
 
+-- Abilities
+insert into ability(name, description, cost, type, points) values ('flying', 'ability to travel in air', 5, 'AURA', 0)
+insert into hero_ability(hero_id, ability_id) values (1, 1)
+
+insert into ability(name, description, cost, type, points) values ('spidey sense', 'tingling feeling around danger', 4, 'AURA', 4)
+insert into hero_ability(hero_id, ability_id) values (2, 2)
+insert into ability(name, description, cost, type, points) values ('web shooter', 'shooting', 5, 'ATTACK', 5)
+insert into hero_ability(hero_id, ability_id) values (2, 3)
+
+insert into ability(name, description, cost, type, points) values ('smash', 'hulk smash', 10, 'ATTACK', 10)
+insert into hero_ability(hero_id, ability_id) values (3, 4)
+
+insert into ability(name, description, cost, type, points) values ('hammer', 'hammer', 6, 'ATTACK', 6)
+insert into hero_ability(hero_id, ability_id) values (4, 5)
+
+insert into ability(name, description, cost, type, points) values ('martial arts', 'hammer', 4, 'ATTACK', 4)
+insert into hero_ability(hero_id, ability_id) values (5, 6)

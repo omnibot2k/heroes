@@ -31,8 +31,8 @@ public class Profile implements Serializable {
     private String picture;
 
     //TODO: allows multiple values
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hero_id", unique = true)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "hero_id", unique = true, nullable = false)
     private Hero hero;
 
     public Profile() {
