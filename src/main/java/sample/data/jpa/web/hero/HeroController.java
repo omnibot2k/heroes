@@ -18,32 +18,46 @@ public class HeroController {
     HeroService heroService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page get(@RequestParam(required = false) String name, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public Page getHeroes(@RequestParam(required = false) String name, @RequestParam(required = false, defaultValue = "false") Boolean abilities, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         HeroSearchCriteria criteria = new HeroSearchCriteria();
         if (!StringUtils.isEmpty(name)) {
             criteria.setName(name);
         }
 
+        criteria.setAbilities(abilities);
+
         PageRequest pageRequest = new PageRequest(page, size);
         Page<Hero> heroPage = heroService.findHeroes(criteria, pageRequest);
 
-        Page<HeroDto> heroDtoPage = heroPage.map(this::heroAbilityConverter);
+        Page<HeroDto> heroDtoPage = null;
+        if (criteria.getAbilities()) {
+            heroDtoPage = heroPage.map(this::heroAbilityConverter);
+        } else {
+            heroDtoPage = heroPage.map(this::heroConverter);
+        }
         return heroDtoPage;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public HeroDto getWithId(@PathVariable(value = "id") Long id, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        Hero hero = heroService.getHero(id);
-        return heroConverter(hero);
+    public HeroDto getHero(@PathVariable(value = "id") Long id, @RequestParam(required = false, defaultValue = "false") Boolean abilities, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        HeroSearchCriteria criteria = new HeroSearchCriteria();
+
+        if (abilities) {
+            criteria.setAbilities(abilities);
+        }
+        Hero hero = heroService.findHero(criteria, id);
+
+        HeroDto heroDto = null;
+        if (criteria.getAbilities()) {
+            heroDto = heroAbilityConverter(hero);
+        } else {
+            heroDto = heroConverter(hero);
+        }
+
+        return heroDto;
     }
 
-    @RequestMapping(value = "/abilities", method = RequestMethod.GET)
-    public HeroDto get(@RequestParam Long id) {
-        Hero hero = heroService.findHeroAbilities(id);
-
-        return heroAbilityConverter(hero);
-    }
-
+    //THIS MAKES A DIFFERENCE WHEN CALLING .getAbilities it loads it!!!!
     private HeroDto heroConverter(Hero hero) {
         HeroDto heroDto = new HeroDto();
         heroDto.setId(hero.getId());

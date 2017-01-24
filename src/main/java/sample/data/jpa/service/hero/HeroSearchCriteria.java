@@ -22,23 +22,33 @@ import java.io.Serializable;
 
 public class HeroSearchCriteria implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private String name;
+    private String name;
+    private Boolean abilities;
 
-	public HeroSearchCriteria() {
-	}
+    public HeroSearchCriteria() {
+    }
 
-	public HeroSearchCriteria(String name) {
-		Assert.notNull(name, "Name must not be null");
-		this.name = name;
-	}
+    public HeroSearchCriteria(String name, Boolean abilities) {
+        Assert.notNull(name, "Name must not be null");
+        this.name = name;
+        this.abilities = abilities;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Boolean abilities) {
+        this.abilities = abilities;
+    }
 }

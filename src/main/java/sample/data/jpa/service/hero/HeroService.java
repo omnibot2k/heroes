@@ -24,12 +24,5 @@ public interface HeroService {
 
     Page<Hero> findHeroes(HeroSearchCriteria criteria, Pageable pageable);
 
-    Hero getHero(String name, Pageable pageable);
-
-    //Page<Profile> getHeroProfiles(Hero hero, Pageable pageable);
-
-    Hero getHero(Long id);
-
-    Hero findHeroAbilities(Long id);
-
+    Hero findHero(HeroSearchCriteria criteria, Long id);
 }
