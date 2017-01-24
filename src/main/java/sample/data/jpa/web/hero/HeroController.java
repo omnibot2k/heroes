@@ -17,6 +17,15 @@ public class HeroController {
     @Autowired
     HeroService heroService;
 
+
+    @RequestMapping(method = RequestMethod.POST)
+    public HeroDto saveHero(@RequestBody HeroDto heroDto) {
+        Hero heroToSave = convertToHero(heroDto);
+        Hero savedHero = heroService.save(heroToSave);
+        return convertToHeroDto(savedHero);
+    }
+
+
     @RequestMapping(method = RequestMethod.GET)
     public Page getHeroes(@RequestParam(required = false) String name, @RequestParam(required = false, defaultValue = "false") Boolean abilities, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         HeroSearchCriteria criteria = new HeroSearchCriteria();
@@ -31,9 +40,9 @@ public class HeroController {
 
         Page<HeroDto> heroDtoPage = null;
         if (criteria.getAbilities()) {
-            heroDtoPage = heroPage.map(this::heroAbilityConverter);
+            heroDtoPage = heroPage.map(this::convertToHeroDtoWithAbilities);
         } else {
-            heroDtoPage = heroPage.map(this::heroConverter);
+            heroDtoPage = heroPage.map(this::convertToHeroDto);
         }
         return heroDtoPage;
     }
@@ -47,23 +56,29 @@ public class HeroController {
 
         HeroDto heroDto = null;
         if (criteria.getAbilities()) {
-            heroDto = heroAbilityConverter(hero);
+            heroDto = convertToHeroDtoWithAbilities(hero);
         } else {
-            heroDto = heroConverter(hero);
+            heroDto = convertToHeroDto(hero);
         }
 
         return heroDto;
     }
 
+    private Hero convertToHero(HeroDto heroDto) {
+        Hero hero = new Hero();
+        hero.setName(heroDto.getName());
+        return hero;
+    }
+
     //THIS MAKES A DIFFERENCE WHEN CALLING .getAbilities it loads it!!!!
-    private HeroDto heroConverter(Hero hero) {
+    private HeroDto convertToHeroDto(Hero hero) {
         HeroDto heroDto = new HeroDto();
         heroDto.setId(hero.getId());
         heroDto.setName(hero.getName());
         return heroDto;
     }
 
-    private HeroDto heroAbilityConverter(Hero hero) {
+    private HeroDto convertToHeroDtoWithAbilities(Hero hero) {
         HeroDto heroDto = new HeroDto();
         heroDto.setId(hero.getId());
         heroDto.setName(hero.getName());

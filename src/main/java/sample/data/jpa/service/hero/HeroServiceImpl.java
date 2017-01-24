@@ -21,6 +21,11 @@ public class HeroServiceImpl implements HeroService {
     HeroAbilityRepository heroAbilityRepository;
 
     @Override
+    public Hero save(Hero hero) {
+        return heroRepository.save(hero);
+    }
+
+    @Override
     public Page<Hero> findHeroes(HeroSearchCriteria criteria, Pageable pageable) {
         Assert.notNull(criteria, "Criteria must not be null");
         String name = criteria.getName();
