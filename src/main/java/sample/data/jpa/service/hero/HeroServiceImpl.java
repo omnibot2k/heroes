@@ -17,6 +17,9 @@ public class HeroServiceImpl implements HeroService {
     @Autowired
     HeroRepository heroRepository;
 
+    @Autowired
+    HeroAbilityRepository heroAbilityRepository;
+
     @Override
     public Page<Hero> findHeroes(HeroSearchCriteria criteria, Pageable pageable) {
         Assert.notNull(criteria, "Criteria must not be null");
@@ -24,11 +27,19 @@ public class HeroServiceImpl implements HeroService {
 
         Page<Hero> pages = null;
 
-        boolean noCriteria = StringUtils.isEmpty(criteria.getName());
-        if (noCriteria) {
-            pages = heroRepository.findAll(pageable);
+        boolean noNameFilter = StringUtils.isEmpty(criteria.getName());
+        if (noNameFilter) {
+            if (criteria.getAbilities()) {
+                pages = heroAbilityRepository.findAll(pageable);
+            } else {
+                pages = heroRepository.findAll(pageable);
+            }
         } else if (!StringUtils.isEmpty(name)) {
-            pages = heroRepository.findByNameContainingAllIgnoringCase(name, pageable);
+            if (criteria.getAbilities()) {
+                pages = heroAbilityRepository.findByNameContainingAllIgnoringCase(name, pageable);
+            } else {
+                pages = heroRepository.findByNameContainingAllIgnoringCase(name, pageable);
+            }
         } else {
             throw new UnsupportedOperationException("Unsupported criteria " + criteria.toString());
         }
@@ -36,18 +47,16 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public Hero getHero(String name, Pageable pageable) {
-        return heroRepository.findByNameIgnoringCase(name);
+    public Hero findHero(HeroSearchCriteria criteria, Long id) {
+        Assert.notNull(criteria, "Criteria must not be null");
+
+        Hero hero = null;
+        if (criteria.getAbilities()) {
+            hero = heroAbilityRepository.findOne(id);
+        } else {
+            hero = heroRepository.findOne(id);
+        }
+        return hero;
     }
 
-    @Override
-    public Hero getHero(Long id) {
-        return heroRepository.findOne(id);
-    }
-
-
-    @Override
-    public Hero findHeroAbilities(Long id) {
-        return heroRepository.findHeroAbilities(id);
-    }
 }
