@@ -22,6 +22,8 @@ import sample.data.jpa.domain.hero.Hero;
 
 public interface HeroService {
 
+    Hero save(Hero hero);
+
     Page<Hero> findHeroes(HeroSearchCriteria criteria, Pageable pageable);
 
     Hero findHero(HeroSearchCriteria criteria, Long id);
