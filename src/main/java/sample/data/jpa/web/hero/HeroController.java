@@ -41,10 +41,8 @@ public class HeroController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public HeroDto getHero(@PathVariable(value = "id") Long id, @RequestParam(required = false, defaultValue = "false") Boolean abilities, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         HeroSearchCriteria criteria = new HeroSearchCriteria();
+        criteria.setAbilities(abilities);
 
-        if (abilities) {
-            criteria.setAbilities(abilities);
-        }
         Hero hero = heroService.findHero(criteria, id);
 
         HeroDto heroDto = null;
